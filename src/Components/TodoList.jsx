@@ -1,3 +1,5 @@
+import "./style/TodoList.css"
+
 function TodoList(props) {
   return (
     <div>

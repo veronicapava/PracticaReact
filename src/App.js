@@ -1,20 +1,19 @@
-import { Fragment } from 'react';
-import { CreateTodoButtom } from './CreateTodoButtom';
-import { TodoCounter } from './TodoCounter';
-import TodoItem from './TodoItem';
-import TodoList from './TodoList';
-import TodoSearch from './TodoSearch';
+import { CreateTodoButtom } from './Components/CreateTodoButtom';
+import { TodoCounter } from './Components/TodoCounter';
+import TodoItem from './Components/TodoItem';
+import TodoList from './Components/TodoList';
+import TodoSearch from './Components/TodoSearch';
 
 const todos = [
-  { text: 'Cut onion', completed: false, id: 1 },
+  { text: 'Cut onion', completed: true, id: 1 },
   { text: 'Study English', completed: false, id: 2 },
-  { text: 'Make breakfast', completed: false, id: 3 }
+  { text: 'Make breakfast', completed: true, id: 3 }
 ];
 
 function App() {
   return (
-    <Fragment>
-      <CreateTodoButtom />
+    < div>
+
       <TodoCounter />
       <TodoList>
         {
@@ -23,8 +22,9 @@ function App() {
           ))
         }
       </TodoList>
+      <CreateTodoButtom />
       <TodoSearch />
-    </Fragment>
+    </div>
   );
 }
 
