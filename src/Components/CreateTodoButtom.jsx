@@ -1,7 +1,15 @@
-import "./style/CreateTodoButtom.css"
+import "../style/CreateTodoButtom.css"
 
 function CreateTodoButtom() {
-  return <button className="CreateTodoButton">+</button>
+  const onClickButton = (msg) => {
+    alert(msg)
+  }
+
+  return (
+    <button className="CreateTodoButton" onClick={() => onClickButton("Modal to create a new ToDo")}>
+      +
+    </button>
+  )
 }
 
 export { CreateTodoButtom }

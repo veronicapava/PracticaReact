@@ -1,4 +1,4 @@
-import "./style/TodoCounter.css"
+import "../style/TodoCounter.css"
 
 function TodoCounter() {
   return (
