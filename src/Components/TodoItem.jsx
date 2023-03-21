@@ -1,18 +1,18 @@
 import "../style/TodoItem.css"
 
-function TodoItem(props) {
+function TodoItem({ text, completed }) {
   const onComplete = () => {
-    alert("ToDo completed: " + props.text)
+    alert("ToDo completed: " + text)
   }
   const onDelete = () => {
-    alert("ToDo deleted: " + props.text)
+    alert("ToDo deleted: " + text)
   }
   return (
     <li className="TodoItem">
-      <span className={`Icon Icon-check ${props.completed && "Icon-check--active"}`} onClick={onComplete}>
+      <span className={`${completed ? "Icon-check--active" : "Icon Icon-check"}`} onClick={onComplete}>
         √
       </span>
-      <p className={`TodoItem-p ${props.completed && "TodoItem-p--complete"}`}>{props.text}</p>
+      <p className={`${completed ? "TodoItem-p--completed" : "TodoItem-p"}`}>{text}</p>
       <span className="Icon Icon-delete" onClick={onDelete}>
         X
       </span>

@@ -8,7 +8,6 @@ function TodoSearch({ searchValue, setSearchValue }) {
   }
   return [
     <input className="TodoSearch" placeholder="Search a ToDo" onChange={onSearchValueChange} value={searchValue} />,
-    <p>{searchValue}</p>,
   ]
 }
 
