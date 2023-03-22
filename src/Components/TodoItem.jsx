@@ -1,12 +1,6 @@
 import "../style/TodoItem.css"
 
-function TodoItem({ text, completed }) {
-  const onComplete = () => {
-    alert("ToDo completed: " + text)
-  }
-  const onDelete = () => {
-    alert("ToDo deleted: " + text)
-  }
+function TodoItem({ text, completed, onComplete, onDelete }) {
   return (
     <li className="TodoItem">
       <span className={`${completed ? "Icon-check--active" : "Icon Icon-check"}`} onClick={onComplete}>
