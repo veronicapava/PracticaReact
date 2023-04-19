@@ -1,19 +1,47 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { CreateTodoButtom } from './Components/CreateTodoButtom';
 import { TodoCounter } from './Components/TodoCounter';
 import TodoItem from './Components/TodoItem';
 import TodoList from './Components/TodoList';
 import TodoSearch from './Components/TodoSearch';
 
-const defaultToDos = [
-  { text: 'Cut onion', completed: true, id: 1 },
-  { text: 'Study English', completed: false, id: 2 },
-  { text: 'Make breakfast', completed: true, id: 3 }
-];
+// const defaultToDos = [
+//   { text: 'Cut onion', completed: true, id: 1 },
+//   { text: 'Study English', completed: false, id: 2 },
+//   { text: 'Make breakfast', completed: true, id: 3 }
+// ];
 
-function App() {
-  const [todos, setTodos] = useState(defaultToDos)
+function useLocalStorage(itemName) {
+
+  const localStorageTodos = localStorage.getItem(itemName)
+  let parsedItem;
+
+  if (!localStorageTodos) {
+    localStorage.setItem(itemName, JSON.stringify([]))
+    parsedItem = []
+  } else {
+    parsedItem = JSON.parse(localStorageTodos)
+  }
+  const [item, setItem] = useState(parsedItem)
+
+
+  const saveItem = (newItem) => {
+    const stringifiedItem = JSON.stringify(newItem)
+    localStorage.setItem(itemName, stringifiedItem)
+    setItem(newItem)
+  }
+
+  return [
+    item, saveItem
+  ]
+
+}
+
+
+function App({ loading, error }) {
+  const [todos, saveTodos] = useLocalStorage('TODOS_V1', [])
   const [searchValue, setSearchValue] = useState('')
+
   const completedTodos = todos.filter(todo => !!todo.completed).length
   const totalTodos = todos.length
 
@@ -33,7 +61,7 @@ function App() {
     const todoIndex = todos.findIndex(todo => todo.text === text) //Buscando el index del todo ingresado
     const newTodos = [...todos]
     newTodos[todoIndex].completed = true
-    setTodos(newTodos)
+    saveTodos(newTodos)
 
     // todos[todoIndex] = { una forma
     //   text: todos[todoIndex].text,
@@ -46,8 +74,14 @@ function App() {
     const todoIndex = todos.findIndex(todo => todo.text === text)
     const newTodos = [...todos]
     newTodos.splice(todoIndex, 1)
-    setTodos(newTodos)
+    saveTodos(newTodos)
   }
+
+
+  useEffect(() => {
+    console.log('use effect')
+  }, [totalTodos])
+
 
   return (
     < div>
@@ -61,6 +95,9 @@ function App() {
         setSearchValue={setSearchValue}
       />
       <TodoList>
+        {error && <p>Hubo un error</p>}
+        {loading && <p>Esta cargando la app :D </p>}
+        {(!loading && !searchedTodos.length) && <p>Crea un nuevo todo :D</p>}
         {
           searchedTodos.map(todo => (
             <TodoItem
