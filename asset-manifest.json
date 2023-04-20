@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/veronicapava/PracticaReact/static/css/main.4ee0242f.css",
+    "main.js": "/veronicapava/PracticaReact/static/js/main.d2690759.js",
+    "index.html": "/veronicapava/PracticaReact/index.html",
+    "main.4ee0242f.css.map": "/veronicapava/PracticaReact/static/css/main.4ee0242f.css.map",
+    "main.d2690759.js.map": "/veronicapava/PracticaReact/static/js/main.d2690759.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.4ee0242f.css",
+    "static/js/main.d2690759.js"
+  ]
+}
