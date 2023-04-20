@@ -1,4 +1,4 @@
-import "../style/CreateTodoButtom.css"
+import "../CreateTodoButtom/CreateTodoButtom.css"
 
 function CreateTodoButtom() {
   const onClickButton = (msg) => {
