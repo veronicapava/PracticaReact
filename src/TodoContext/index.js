@@ -39,6 +39,15 @@ function TodoProvider(props) {
         // }
 
     }
+    const addTodo = (text) => {
+        const newTodos = [...todos]
+        newTodos.push({
+            completed: false,
+            text
+        })
+        saveTodos(newTodos)
+
+    }
 
     const deleteTodo = (text) => {
         const todoIndex = todos.findIndex(todo => todo.text === text)
@@ -46,11 +55,6 @@ function TodoProvider(props) {
         newTodos.splice(todoIndex, 1)
         saveTodos(newTodos)
     }
-
-
-    // useEffect(() => {
-    //     console.log('use effect')
-    // }, [totalTodos])
 
     // Retornamos nuestro proveedor con nuestro contexto en la etiqueta value, que recibirá a toda nuestra aplicación, por eso necesitamos la prop children
 
@@ -64,6 +68,7 @@ function TodoProvider(props) {
             searchValue,
             setSearchValue,
             searchedTodos,
+            addTodo,
             completeTodo,
             deleteTodo,
             openModal,

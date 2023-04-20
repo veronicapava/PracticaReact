@@ -1,12 +1,12 @@
 import "../CreateTodoButtom/CreateTodoButtom.css"
 
-function CreateTodoButtom() {
-  const onClickButton = (msg) => {
-    alert(msg)
+function CreateTodoButtom(props) {
+  const onClickButton = () => {
+    props.setOpenModal((prevState) => !prevState)
   }
 
   return (
-    <button className="CreateTodoButton" onClick={() => onClickButton("Modal to create a new ToDo")}>
+    <button className="CreateTodoButton" onClick={onClickButton}>
       +
     </button>
   )
